@@ -1,0 +1,93 @@
+header {
+    --header-bg-word-size: clamp(8rem, 25vw, 35vh);
+    --header-bg-blur: 12px;
+    --header-bg-opacity: 0.78;
+    --header-bottom-shadow: 0 20px 48px rgba(0, 0, 0, 0.38), 0 8px 20px rgba(0, 0, 0, 0.22);
+
+    position: relative;
+    padding-top: var(--site-nav-offset);
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background-image: url('../../assets/img/hero-bg.png');
+    backdrop-filter: blur(20px);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
+    box-shadow: var(--header-bottom-shadow);
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    font-size: var(--header-bg-word-size);
+    font-weight: 800;
+    line-height: 1;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: var(--header-bg-opacity);
+    filter: blur(var(--header-bg-blur));
+}
+
+header > .container {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-content {
+    flex: 1;
+    min-height: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-cta-wrap {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    max-width: 500px;
+    width: 100%;
+}
+
+.header-button {
+    width: 100%;
+}
+
+@media (max-width: 1024px) {
+    header {
+        margin-bottom: 48px;
+    }
+
+    .header-cta-wrap {
+        bottom: 28px;
+        max-width: min(440px, calc(100% - 32px));
+    }
+}
+
+@media (max-width: 640px) {
+    header {
+        margin-bottom: 36px;
+    }
+
+    .header-cta-wrap {
+        bottom: 20px;
+        max-width: calc(100% - 24px);
+    }
+}
