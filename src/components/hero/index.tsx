@@ -41,9 +41,6 @@ export const Hero = () => {
                 <motion.h1 className="hero-title" variants={lineVariants}>
                     {t("hero.title")}
                 </motion.h1>
-                <motion.p className="hero-subtitle" variants={lineVariants}>
-                    {t("hero.subtitle")}
-                </motion.p>
             </motion.div>
         </div>
     )

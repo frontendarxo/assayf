@@ -19,8 +19,6 @@ const en: MessageTree = {
     hero: {
         title:
             "International holding in trade, logistics, and financial solutions",
-        subtitle:
-            "We organize goods supply, international settlements, and turnkey business processes — without intermediaries, with full control at every stage.",
     },
     header: {
         chooseDirection: "Choose a direction",
@@ -256,7 +254,7 @@ const en: MessageTree = {
 const ru: MessageTree = {
     nav: {
         home: "Главная",
-        about: "Обо мне",
+        about: "О компании",
         activities: "Деятельности",
         reviews: "Отзывы",
         contact: "Обратная связь",
@@ -268,8 +266,6 @@ const ru: MessageTree = {
     hero: {
         title:
             "Международный холдинг в сфере торговли, логистики и финансовых решений",
-        subtitle:
-            "Организуем поставки товаров, международные расчёты и бизнес-процессы под ключ — без посредников, с полным контролем на каждом этапе.",
     },
     header: {
         chooseDirection: "Выбрать направление",
@@ -521,8 +517,6 @@ const tr: MessageTree = {
     hero: {
         title:
             "Ticaret, lojistik ve finansal çözümler alanında uluslararası holding",
-        subtitle:
-            "Mal tedarikini, uluslararası ödemeleri ve anahtar teslim iş süreçlerini organize ediyoruz — aracı olmadan, her aşamada tam kontrolle.",
     },
     header: {
         chooseDirection: "Yön seç",
