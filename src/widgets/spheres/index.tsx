@@ -1,6 +1,6 @@
 import { clsx } from "clsx"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 
 import { Shpera, type ShperaCardTheme } from "../../components/shpera"
 import { getLocalizedSpheres } from "../../data/spheres"
@@ -27,7 +27,10 @@ const SPHERES_TEXT_ON_DARK_BG = "#AEAEAE"
 const SPHERES_TEXT_ON_LIGHT_BG = "#161A1D"
 const DARK_BG_LUMINANCE_THRESHOLD = 0.4
 
-const SPHERE_AUTO_ROTATION_MS = 12_000
+const SPHERE_AUTO_ROTATION_MS = 20_000
+
+/** Доля секции в viewport, с которой считаем, что пользователь «дошёл» до блока */
+const SPHERE_SECTION_VISIBILITY_THRESHOLD = 0.2
 const SPHERE_CONTENT_CROSSFADE_S = 0.55
 
 const ICON_SPRING_STIFFNESS = 400
@@ -70,10 +73,31 @@ export const Spheres = () => {
     const { t } = useLanguage()
     const spheres = useMemo(() => getLocalizedSpheres(t), [t])
     const [activeSphere, setActiveSphere] = useState<number>(1)
+    const [isSectionInView, setIsSectionInView] = useState(false)
+    const sectionRef = useRef<HTMLElement | null>(null)
     const reduce = useReducedMotion()
 
     useEffect(() => {
-        if (reduce || spheres.length <= 1) return
+        const el = sectionRef.current
+        if (!el) return
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                const visible =
+                    entry.isIntersecting &&
+                    entry.intersectionRatio >= SPHERE_SECTION_VISIBILITY_THRESHOLD
+                setIsSectionInView(visible)
+            },
+            { threshold: [0, SPHERE_SECTION_VISIBILITY_THRESHOLD, 0.5, 1] },
+        )
+        observer.observe(el)
+        return () => {
+            observer.disconnect()
+        }
+    }, [])
+
+    useEffect(() => {
+        if (reduce || spheres.length <= 1 || !isSectionInView) return
         const id = window.setInterval(() => {
             setActiveSphere((prev) => {
                 const idx = spheres.findIndex((s) => s.id === prev)
@@ -82,7 +106,7 @@ export const Spheres = () => {
             })
         }, SPHERE_AUTO_ROTATION_MS)
         return () => window.clearInterval(id)
-    }, [reduce, spheres, activeSphere])
+    }, [reduce, spheres, isSectionInView])
 
     const sectionStyle = useMemo(() => {
         const backgroundColor = SPHERE_ACTIVE_BACKGROUND[activeSphere]
@@ -111,7 +135,12 @@ export const Spheres = () => {
     const iconVisible = { scale: 1, opacity: 1 }
 
     return (
-        <section className="spheres" id="activities" style={sectionStyle}>
+        <section
+            ref={sectionRef}
+            className="spheres"
+            id="activities"
+            style={sectionStyle}
+        >
             <div className="container">
                 <ScrollReveal>
                     <h2 className="spheres-title">{t("spheres.sectionTitle")}</h2>
