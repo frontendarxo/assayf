@@ -2,7 +2,6 @@ import { Send } from "lucide-react"
 import { type FormEvent, useCallback, useMemo, useState } from "react"
 
 import { useLanguage } from "../../i18n/useLanguage"
-import { BrandSpan } from "../../shared/brand-typography"
 import { ScrollReveal } from "../../shared/scroll-reveal"
 
 import { CONTACT_SPHERES, digitsForTel, MAIN_TELEGRAM_USER, type SphereId } from "./spheres"
@@ -146,7 +145,7 @@ export const Contact = () => {
                                             target="_blank"
                                             rel="noreferrer noopener"
                                         >
-                                            <BrandSpan>{`@${MAIN_TELEGRAM_USER}`}</BrandSpan>
+                                            {`@${MAIN_TELEGRAM_USER}`}
                                         </a>
                                     </div>
                                 </li>
@@ -203,7 +202,7 @@ export const Contact = () => {
                                             target="_blank"
                                             rel="noreferrer noopener"
                                         >
-                                            <BrandSpan>{`@${selectedSphere.instagramHandle}`}</BrandSpan>
+                                            {`@${selectedSphere.instagramHandle}`}
                                         </a>
                                     </div>
                                 </li>

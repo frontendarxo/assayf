@@ -3,7 +3,6 @@ import { useEffect, useMemo, useState } from "react"
 
 import { getLocalizedReviews } from "../../data/reviews"
 import { useLanguage } from "../../i18n/useLanguage"
-import { BrandInlineText, BrandSpan } from "../../shared/brand-typography"
 import { ScrollReveal } from "../../shared/scroll-reveal"
 
 import "./style.css"
@@ -31,9 +30,7 @@ export const Reviews = () => {
                         <h2 className="reviews-title">{t("reviews.sectionTitle")}</h2>
                     </ScrollReveal>
                     <ScrollReveal delay={0.08}>
-                        <h3 className="reviews-subtitle">
-                            <BrandInlineText text={t("reviews.subtitle")} />
-                        </h3>
+                        <h3 className="reviews-subtitle">{t("reviews.subtitle")}</h3>
                     </ScrollReveal>
                     <ScrollReveal delay={0.14}>
                         <div
@@ -54,11 +51,9 @@ export const Reviews = () => {
                                     )}
                                     aria-hidden={index !== activeIndex}
                                 >
-                                    <p className="text-center text-2xl font-extrabold text-[#101010]">
-                                        <BrandSpan>{review.name}</BrandSpan>
-                                    </p>
+                                    <p className="text-center text-2xl font-extrabold text-[#101010]">{review.name}</p>
                                     <p className="text-center text-xl font-normal leading-snug text-[#9DA1A2]">
-                                        <BrandInlineText text={review.text} />
+                                        {review.text}
                                     </p>
                                 </div>
                             ))}
