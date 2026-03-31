@@ -242,6 +242,17 @@ const en: MessageTree = {
         feedbackHeader: "Website contact",
         feedbackHowContact: "How to reach you",
         feedbackMessage: "Message",
+        spherePrompt: "Choose a direction to see contacts",
+        mainContactTitle: "Main contact",
+        sphereLegend: "Direction",
+        spheres: {
+            china: "China supplies",
+            logistics: "Logistics",
+            assayf_product: "Assayf products",
+            export_import: "Export & import",
+            valut: "Assayf currency",
+            general: "Company",
+        },
     },
     footer: {
         tagline:
@@ -493,6 +504,17 @@ const ru: MessageTree = {
         feedbackHeader: "Обратная связь с сайта",
         feedbackHowContact: "Как с вами связаться",
         feedbackMessage: "Сообщение",
+        spherePrompt: "Выберите направление, чтобы увидеть контакты",
+        mainContactTitle: "Основной контакт",
+        sphereLegend: "Направление",
+        spheres: {
+            china: "Поставки Китая",
+            logistics: "Логистика",
+            assayf_product: "Продукция Assayf",
+            export_import: "Экспорт и импорт",
+            valut: "Валют Assayf",
+            general: "Компания",
+        },
     },
     footer: {
         tagline:
@@ -742,6 +764,17 @@ const tr: MessageTree = {
         feedbackHeader: "Web sitesi iletişimi",
         feedbackHowContact: "Size nasıl ulaşalım",
         feedbackMessage: "Mesaj",
+        spherePrompt: "Kişileri görmek için bir yön seçin",
+        mainContactTitle: "Ana iletişim",
+        sphereLegend: "Yön",
+        spheres: {
+            china: "Çin tedariki",
+            logistics: "Lojistik",
+            assayf_product: "Assayf ürünleri",
+            export_import: "İhracat ve ithalat",
+            valut: "Assayf döviz",
+            general: "Şirket",
+        },
     },
     footer: {
         tagline:

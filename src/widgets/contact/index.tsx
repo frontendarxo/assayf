@@ -5,6 +5,8 @@ import { useLanguage } from "../../i18n/useLanguage"
 import { BrandSpan } from "../../shared/brand-typography"
 import { ScrollReveal } from "../../shared/scroll-reveal"
 
+import { CONTACT_SPHERES, digitsForTel, MAIN_TELEGRAM_USER, type SphereId } from "./spheres"
+
 import "./style.css"
 
 const CONTACT_ICON_SIZE = 20
@@ -44,12 +46,8 @@ const ContactInstagramIcon = ({ className }: { className?: string }) => (
 
 type ContactChannel = "whatsapp" | "telegram" | "email"
 
-const PHONE_DISPLAY = "89344445040"
 /** Digits only, for wa.me links (shared with founder modal, etc.). */
 export const PHONE_WHATSAPP = "79344445040"
-const INSTAGRAM_USER = "assayf1"
-const TELEGRAM_DISPLAY = "@fulanibnfula"
-const TELEGRAM_USER = "fulanibnfula"
 
 const buildFeedbackBody = (
     contactValue: string,
@@ -72,12 +70,15 @@ const openWhatsAppWithText = (text: string) => {
     window.open(url, "_blank", "noopener,noreferrer")
 }
 
+const sphereLabelKey = (id: SphereId) => `contact.spheres.${id}` as const
+
 export const Contact = () => {
     const { t } = useLanguage()
     const [channel, setChannel] = useState<ContactChannel>("whatsapp")
     const [contactValue, setContactValue] = useState("")
     const [message, setMessage] = useState("")
     const [showMessageField, setShowMessageField] = useState(false)
+    const [selectedSphereId, setSelectedSphereId] = useState<SphereId | null>(null)
 
     const channelLabel = useMemo(
         (): Record<ContactChannel, string> => ({
@@ -95,6 +96,11 @@ export const Contact = () => {
             email: t("contact.placeholders.email"),
         }),
         [t],
+    )
+
+    const selectedSphere = useMemo(
+        () => CONTACT_SPHERES.find((row) => row.id === selectedSphereId),
+        [selectedSphereId],
     )
 
     const hideMessageField = useCallback(() => {
@@ -115,6 +121,8 @@ export const Contact = () => {
         openWhatsAppWithText(body)
     }
 
+    const waDigits = selectedSphere ? digitsForTel(selectedSphere.whatsappDigits) : ""
+
     return (
         <section className="contact" id="contact">
             <div className="container">
@@ -123,51 +131,84 @@ export const Contact = () => {
                 </ScrollReveal>
                 <div className="contact-layout">
                     <ScrollReveal className="contact-info-wrap" direction="right">
-                        <ul className="contact-info">
-                            <li className="contact-info-item contact-info-item--whatsapp">
-                                <span className="contact-info-icon-wrap" aria-hidden>
-                                    <ContactWhatsAppIcon />
-                                </span>
-                                <div className="contact-info-text">
-                                    <span className="contact-info-label">WhatsApp</span>
-                                    <a className="contact-info-link" href={`tel:+${PHONE_WHATSAPP}`}>
-                                        {PHONE_DISPLAY}
-                                    </a>
-                                </div>
-                            </li>
-                            <li className="contact-info-item contact-info-item--instagram">
-                                <span className="contact-info-icon-wrap" aria-hidden>
-                                    <ContactInstagramIcon />
-                                </span>
-                                <div className="contact-info-text">
-                                    <span className="contact-info-label">Instagram</span>
-                                    <a
-                                        className="contact-info-link"
-                                        href={`https://www.instagram.com/${INSTAGRAM_USER}/`}
-                                        target="_blank"
-                                        rel="noreferrer noopener"
-                                    >
-                                        <BrandSpan>{INSTAGRAM_USER}</BrandSpan>
-                                    </a>
-                                </div>
-                            </li>
-                            <li className="contact-info-item contact-info-item--telegram">
-                                <span className="contact-info-icon-wrap" aria-hidden>
-                                    <Send size={CONTACT_ICON_SIZE} strokeWidth={CONTACT_ICON_STROKE} />
-                                </span>
-                                <div className="contact-info-text">
-                                    <span className="contact-info-label">Telegram</span>
-                                    <a
-                                        className="contact-info-link"
-                                        href={`https://t.me/${TELEGRAM_USER}`}
-                                        target="_blank"
-                                        rel="noreferrer noopener"
-                                    >
-                                        <BrandSpan>{TELEGRAM_DISPLAY}</BrandSpan>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
+                        <div className="contact-main-telegram">
+                            <p className="contact-main-telegram-title">{t("contact.mainContactTitle")}</p>
+                            <ul className="contact-info contact-info--main-telegram">
+                                <li className="contact-info-item contact-info-item--telegram contact-main-telegram-item">
+                                    <span className="contact-info-icon-wrap" aria-hidden>
+                                        <Send size={CONTACT_ICON_SIZE} strokeWidth={CONTACT_ICON_STROKE} />
+                                    </span>
+                                    <div className="contact-info-text">
+                                        <span className="contact-info-label">{t("contact.channels.telegram")}</span>
+                                        <a
+                                            className="contact-info-link contact-main-telegram-link"
+                                            href={`https://t.me/${MAIN_TELEGRAM_USER}`}
+                                            target="_blank"
+                                            rel="noreferrer noopener"
+                                        >
+                                            <BrandSpan>{`@${MAIN_TELEGRAM_USER}`}</BrandSpan>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="contact-spheres">
+                            <p className="contact-sphere-legend">{t("contact.sphereLegend")}</p>
+                            <div className="contact-sphere-buttons" role="group" aria-label={t("contact.sphereLegend")}>
+                                {CONTACT_SPHERES.map((row) => {
+                                    const isActive = selectedSphereId === row.id
+                                    return (
+                                        <button
+                                            key={row.id}
+                                            type="button"
+                                            className={`contact-sphere-btn${isActive ? " contact-sphere-btn--active" : ""}`}
+                                            aria-pressed={isActive}
+                                            onClick={() => setSelectedSphereId(isActive ? null : row.id)}
+                                        >
+                                            {t(sphereLabelKey(row.id))}
+                                        </button>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                        {!selectedSphere ? (
+                            <p className="contact-sphere-hint">{t("contact.spherePrompt")}</p>
+                        ) : (
+                            <ul className="contact-info">
+                                <li className="contact-info-item contact-info-item--whatsapp">
+                                    <span className="contact-info-icon-wrap" aria-hidden>
+                                        <ContactWhatsAppIcon />
+                                    </span>
+                                    <div className="contact-info-text">
+                                        <span className="contact-info-label">{t("contact.channels.whatsapp")}</span>
+                                        <a
+                                            className="contact-info-link"
+                                            href={`https://wa.me/${waDigits}`}
+                                            target="_blank"
+                                            rel="noreferrer noopener"
+                                        >
+                                            {selectedSphere.whatsappDisplay}
+                                        </a>
+                                    </div>
+                                </li>
+                                <li className="contact-info-item contact-info-item--instagram">
+                                    <span className="contact-info-icon-wrap" aria-hidden>
+                                        <ContactInstagramIcon />
+                                    </span>
+                                    <div className="contact-info-text">
+                                        <span className="contact-info-label">Instagram</span>
+                                        <a
+                                            className="contact-info-link"
+                                            href={`https://www.instagram.com/${selectedSphere.instagramHandle}/`}
+                                            target="_blank"
+                                            rel="noreferrer noopener"
+                                        >
+                                            <BrandSpan>{`@${selectedSphere.instagramHandle}`}</BrandSpan>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        )}
                     </ScrollReveal>
                     <ScrollReveal className="contact-form-wrap" direction="left" delay={0.08}>
                         <form className="contact-form" onSubmit={handleSubmit}>

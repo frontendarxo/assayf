@@ -26,6 +26,102 @@
 .contact-info-wrap {
     flex: 1;
     min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2.5vw, 22px);
+}
+
+.contact-main-telegram {
+    padding: clamp(14px, 2.2vw, 18px) clamp(16px, 2.5vw, 20px);
+    border-radius: 12px;
+    border: 1px solid rgba(42, 171, 238, 0.45);
+    background: linear-gradient(145deg, rgba(42, 171, 238, 0.12), rgba(16, 16, 16, 0.35));
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact-main-telegram-title {
+    margin: 0 0 12px;
+    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #eaeaea;
+}
+
+.contact-info--main-telegram {
+    gap: 0;
+}
+
+.contact-main-telegram-item {
+    align-items: center;
+}
+
+.contact-main-telegram-item .contact-info-icon-wrap {
+    width: 48px;
+    height: 48px;
+}
+
+.contact-main-telegram-link {
+    font-size: clamp(1.15rem, 3vw, 1.45rem);
+    font-weight: 500;
+    text-decoration-thickness: 2px;
+}
+
+.contact-spheres {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-sphere-legend {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #eaeaea;
+}
+
+.contact-sphere-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+}
+
+.contact-sphere-btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(157, 161, 162, 0.65);
+    background: rgba(0, 0, 0, 0.2);
+    color: #eaeaea;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.contact-sphere-btn:hover {
+    border-color: #eaeaea;
+    background-color: rgba(234, 234, 234, 0.08);
+}
+
+.contact-sphere-btn:focus-visible {
+    outline: 2px solid #eaeaea;
+    outline-offset: 2px;
+}
+
+.contact-sphere-btn--active {
+    border-color: #eaeaea;
+    background-color: rgba(234, 234, 234, 0.12);
+    font-weight: 600;
+}
+
+.contact-sphere-hint {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #9da1a2;
+    line-height: 1.45;
 }
 
 .contact-form-wrap {
@@ -104,7 +200,7 @@
 
 .contact-info-link {
     font-size: clamp(1rem, 2.6vw, 1.25rem);
-    font-weight: 600;
+    font-weight: 400;
     color: #EAEAEA;
     text-decoration: underline;
     text-underline-offset: 4px;
