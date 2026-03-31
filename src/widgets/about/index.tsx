@@ -3,7 +3,7 @@ import { createPortal } from "react-dom"
 import { AnimatePresence, motion } from "framer-motion"
 import { Info, X } from "lucide-react"
 
-import aboutImage from "../../assets/img/About-Img.jpeg"
+import aboutImage from "../../assets/img/about-img.png"
 import { useLanguage } from "../../i18n/useLanguage"
 import { OptimizedImage } from "../../shared/optimized-image"
 import { PHONE_WHATSAPP } from "../contact"
