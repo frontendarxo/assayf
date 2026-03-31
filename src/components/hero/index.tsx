@@ -10,11 +10,22 @@ export const Hero = () => {
     const { t } = useLanguage()
     const reduce = useReducedMotion()
     const lineHidden = reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: REVEAL_OFFSET_PX * 0.6 }
+    const lineVariants = {
+        hidden: lineHidden,
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: REVEAL_DURATION_S,
+                ease: REVEAL_EASE,
+            },
+        },
+    }
 
     return (
         <div className="hero">
-            <motion.h1
-                className="hero-title"
+            <motion.div
+                className="hero-stack"
                 initial="hidden"
                 animate="visible"
                 variants={{
@@ -27,22 +38,13 @@ export const Hero = () => {
                     },
                 }}
             >
-                <motion.span
-                    variants={{
-                        hidden: lineHidden,
-                        visible: {
-                            opacity: 1,
-                            y: 0,
-                            transition: {
-                                duration: REVEAL_DURATION_S,
-                                ease: REVEAL_EASE,
-                            },
-                        },
-                    }}
-                >
+                <motion.h1 className="hero-title" variants={lineVariants}>
                     {t("hero.title")}
-                </motion.span>
-            </motion.h1>
+                </motion.h1>
+                <motion.p className="hero-subtitle" variants={lineVariants}>
+                    {t("hero.subtitle")}
+                </motion.p>
+            </motion.div>
         </div>
     )
 }

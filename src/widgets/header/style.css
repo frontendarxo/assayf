@@ -62,12 +62,27 @@ header > .container {
     position: absolute;
     bottom: 40px;
     left: 50%;
-    max-width: 500px;
+    max-width: min(560px, calc(100% - 32px));
     width: 100%;
 }
 
+.header-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: stretch;
+}
+
 .header-button {
-    width: 100%;
+    flex: 1 1 200px;
+    min-width: min(200px, 100%);
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
 @media (max-width: 1024px) {

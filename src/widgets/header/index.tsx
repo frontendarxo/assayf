@@ -73,7 +73,18 @@ export const Header = () => {
                             },
                         }}
                     >
-                        <Button text={t("header.discussProject")} className="header-button" />
+                        <div className="header-cta-row">
+                            <Button
+                                text={t("header.chooseDirection")}
+                                className="header-button"
+                                href="#activities"
+                            />
+                            <Button
+                                text={t("header.contactUs")}
+                                className="header-button"
+                                href="#contact"
+                            />
+                        </div>
                     </motion.div>
                 </motion.div>
             </div>

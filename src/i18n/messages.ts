@@ -18,17 +18,21 @@ const en: MessageTree = {
     },
     hero: {
         title:
-            "An international company in trade, logistics, and financial services.",
+            "International holding in trade, logistics, and financial solutions",
+        subtitle:
+            "We organize goods supply, international settlements, and turnkey business processes — without intermediaries, with full control at every stage.",
     },
     header: {
-        discussProject: "Discuss a project",
+        chooseDirection: "Choose a direction",
+        contactUs: "Contact us",
     },
     about: {
         sectionTitle: "About the company",
-        subtitle: "A little about the company",
-        description:
-            "Assayf Company is an international business platform that connects, manages, and guarantees results.",
-        learnMore: "Learn more",
+        lead: "ASSAYF COMPANY is an international holding uniting directions in trade, logistics, and financial operations.",
+        moreBody:
+            "We build direct relationships with manufacturers, organize goods supply, and provide financial support for transactions worldwide.\n\nWe work without intermediaries, controlling every stage — from negotiations to delivery and settlements.\n\nThe company's geography covers Russia, Turkey, China, CIS countries, the Middle East, and Southeast Asia.",
+        readMore: "Read more",
+        readLess: "Show less",
         imageAlt: "Assayf company founder — Ibrahim",
         imageCaption: "Founder — Ibragimov Ibragim",
         statsTitle: "By the numbers",
@@ -36,6 +40,13 @@ const en: MessageTree = {
         stat2: "Satisfied clients",
         stat3: "Team members",
         stat4: "Years of experience in the industry",
+        founderInfoOpen: "About the founder — details",
+        founderInfoClose: "Close",
+        founderInfoTitle: "About the founder",
+        founderInfoBody:
+            "An entrepreneur developing international trade and logistics directions.\n\nExperience working in different countries and direct interaction with manufacturers enable effective business processes and optimal solutions for clients.\n\nGeography of operations — more than 18 countries, continuous development of new directions and markets.",
+        founderInfoContactHeading: "Contact:",
+        founderInfoWhatsAppLine: "WhatsApp: +7 934 444 50 40",
     },
     spheres: {
         sectionTitle: "Our projects",
@@ -154,17 +165,21 @@ const ru: MessageTree = {
     },
     hero: {
         title:
-            "Международная компания в сфере торговли, логистики и финансовых услуг.",
+            "Международный холдинг в сфере торговли, логистики и финансовых решений",
+        subtitle:
+            "Организуем поставки товаров, международные расчёты и бизнес-процессы под ключ — без посредников, с полным контролем на каждом этапе.",
     },
     header: {
-        discussProject: "Обсудить проект",
+        chooseDirection: "Выбрать направление",
+        contactUs: "Связаться с нами",
     },
     about: {
         sectionTitle: "О компании",
-        subtitle: "Немного о компании",
-        description:
-            "Assayf Company — это международная бизнес-платформа, которая соединяет, управляет и гарантирует результаты.",
-        learnMore: "Узнать больше",
+        lead: "ASSAYF COMPANY — международный холдинг, объединяющий направления в сфере торговли, логистики и финансовых операций.",
+        moreBody:
+            "Мы выстраиваем прямые связи с производителями, организуем поставки товаров и обеспечиваем финансовое сопровождение сделок по всему миру.\n\nРаботаем без посредников, контролируя каждый этап — от переговоров до доставки и расчётов.\n\nГеография компании охватывает Россию, Турцию, Китай, страны СНГ, Ближний Восток и Юго-Восточную Азию.",
+        readMore: "Читать далее",
+        readLess: "Свернуть",
         imageAlt: "Основатель компании Assayf — Ибрагим",
         imageCaption: "Основатель — Ибрагимов Ибрагим",
         statsTitle: "Мы в цифрах",
@@ -172,6 +187,13 @@ const ru: MessageTree = {
         stat2: "Довольных клиентов",
         stat3: "Сотрудников",
         stat4: "Лет опыта в сфере",
+        founderInfoOpen: "Подробнее об основателе",
+        founderInfoClose: "Закрыть",
+        founderInfoTitle: "Об основателе",
+        founderInfoBody:
+            "Предприниматель, развивающий международные торговые и логистические направления.\n\nОпыт работы в разных странах и прямое взаимодействие с производителями позволяют выстраивать эффективные бизнес-процессы и находить оптимальные решения для клиентов.\n\nГеография работы — более 18 стран, постоянное развитие новых направлений и рынков.",
+        founderInfoContactHeading: "Контакт:",
+        founderInfoWhatsAppLine: "WhatsApp: +7 934 444 50 40",
     },
     spheres: {
         sectionTitle: "Наши проекты",
@@ -290,17 +312,21 @@ const tr: MessageTree = {
     },
     hero: {
         title:
-            "Ticaret, lojistik ve finansal hizmetler alanında uluslararası bir şirket.",
+            "Ticaret, lojistik ve finansal çözümler alanında uluslararası holding",
+        subtitle:
+            "Mal tedarikini, uluslararası ödemeleri ve anahtar teslim iş süreçlerini organize ediyoruz — aracı olmadan, her aşamada tam kontrolle.",
     },
     header: {
-        discussProject: "Proje konuşalım",
+        chooseDirection: "Yön seç",
+        contactUs: "Bize ulaşın",
     },
     about: {
         sectionTitle: "Şirket hakkında",
-        subtitle: "Şirket hakkında kısaca",
-        description:
-            "Assayf Company; bağlar, yönetir ve sonuçları garanti eden uluslararası bir iş platformudur.",
-        learnMore: "Daha fazla bilgi",
+        lead: "ASSAYF COMPANY; ticaret, lojistik ve finansal operasyonlar alanında faaliyet gösteren uluslararası bir holdingdir.",
+        moreBody:
+            "Üreticilerle doğrudan bağlantılar kuruyoruz, mal tedarikini organize ediyoruz ve dünya genelinde işlemler için finansal destek sağlıyoruz.\n\nAracı olmadan çalışıyoruz; müzakereden teslimata ve ödemelere kadar her aşamayı kontrol ediyoruz.\n\nŞirketin coğrafyası Rusya, Türkiye, Çin, BDT ülkeleri, Orta Doğu ve Güneydoğu Asya'yı kapsar.",
+        readMore: "Devamını oku",
+        readLess: "Daralt",
         imageAlt: "Assayf şirketi kurucusu — İbrahim",
         imageCaption: "Kurucu — İbrahimov İbrahim",
         statsTitle: "Rakamlarla biz",
@@ -308,6 +334,13 @@ const tr: MessageTree = {
         stat2: "Memnun müşteriler",
         stat3: "Çalışanlar",
         stat4: "Sektördeki deneyim yılı",
+        founderInfoOpen: "Kurucu hakkında ayrıntılar",
+        founderInfoClose: "Kapat",
+        founderInfoTitle: "Kurucu hakkında",
+        founderInfoBody:
+            "Uluslararası ticaret ve lojistik yönlerini geliştiren bir girişimci.\n\nFarklı ülkelerde çalışma deneyimi ve üreticilerle doğrudan etkileşim, etkili iş süreçleri ve müşteriler için optimal çözümler sunmaya olanak tanır.\n\nFaaliyet coğrafyası — 18'den fazla ülke, yeni yönlerin ve pazarların sürekli gelişimi.",
+        founderInfoContactHeading: "İletişim:",
+        founderInfoWhatsAppLine: "WhatsApp: +7 934 444 50 40",
     },
     spheres: {
         sectionTitle: "Projelerimiz",

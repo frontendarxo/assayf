@@ -45,7 +45,8 @@ const ContactInstagramIcon = ({ className }: { className?: string }) => (
 type ContactChannel = "whatsapp" | "telegram" | "email"
 
 const PHONE_DISPLAY = "89344445040"
-const PHONE_WHATSAPP = "79344445040"
+/** Digits only, for wa.me links (shared with founder modal, etc.). */
+export const PHONE_WHATSAPP = "79344445040"
 const INSTAGRAM_USER = "assayf1"
 const TELEGRAM_DISPLAY = "@fulanibnfula"
 const TELEGRAM_USER = "fulanibnfula"
