@@ -32,6 +32,8 @@ type FounderInfoModalProps = {
     paragraphs: string[]
     contactHeading: string
     whatsAppLinkLabel: string
+    imageSrc: string
+    imageAlt: string
 }
 
 function FounderInfoModal({
@@ -43,6 +45,8 @@ function FounderInfoModal({
     paragraphs,
     contactHeading,
     whatsAppLinkLabel,
+    imageSrc,
+    imageAlt,
 }: FounderInfoModalProps) {
     const mount =
         typeof document !== "undefined" ? document.body : null
@@ -85,6 +89,13 @@ function FounderInfoModal({
                         >
                             <X aria-hidden size={22} strokeWidth={2} />
                         </button>
+                        <div className="about-founder-modal__media">
+                            <OptimizedImage
+                                src={imageSrc}
+                                alt={imageAlt}
+                                className="about-founder-modal__image"
+                            />
+                        </div>
                         <h3 className="about-founder-modal__title" id={titleId}>
                             {title}
                         </h3>
@@ -122,6 +133,10 @@ export const About = () => {
     const [isFounderModalOpen, setIsFounderModalOpen] = useState(false)
     const moreRegionId = useId()
     const founderModalTitleId = useId()
+
+    const openFounderModal = () => {
+        setIsFounderModalOpen(true)
+    }
 
     const moreParagraphs = useMemo(
         () => splitAboutParagraphs(t("about.moreBody")),
@@ -182,6 +197,8 @@ export const About = () => {
                 paragraphs={founderParagraphs}
                 contactHeading={t("about.founderInfoContactHeading")}
                 whatsAppLinkLabel={t("about.founderInfoWhatsAppLink")}
+                imageSrc={aboutImage}
+                imageAlt={t("about.imageAlt")}
             />
             <div className="container">
                 <ScrollReveal>
@@ -221,20 +238,30 @@ export const About = () => {
                         <figure className="about-image__figure">
                             <button
                                 type="button"
+                                className="about-image__photo-trigger"
+                                aria-label={t("about.founderInfoOpen")}
+                                aria-haspopup="dialog"
+                                aria-expanded={isFounderModalOpen}
+                                onClick={openFounderModal}
+                            >
+                                <OptimizedImage
+                                    src={aboutImage}
+                                    alt=""
+                                />
+                                <span className="about-image__photo-hint" aria-hidden>
+                                    {t("about.imageHoverHint")}
+                                </span>
+                            </button>
+                            <button
+                                type="button"
                                 className="about-image__info-btn"
                                 aria-label={t("about.founderInfoOpen")}
                                 aria-haspopup="dialog"
                                 aria-expanded={isFounderModalOpen}
-                                onClick={() => {
-                                    setIsFounderModalOpen(true)
-                                }}
+                                onClick={openFounderModal}
                             >
                                 <Info aria-hidden size={22} strokeWidth={2} />
                             </button>
-                            <OptimizedImage
-                                src={aboutImage}
-                                alt={t("about.imageAlt")}
-                            />
                             <figcaption className="about-image__caption">
                                 <BrandInlineText text={t("about.imageCaption")} />
                             </figcaption>
