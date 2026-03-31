@@ -3,7 +3,7 @@ import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from
 
 import { useLanguage } from "../../i18n/useLanguage"
 import { BrandInlineText } from "../../shared/brand-typography"
-import type { Sphere, SphereImageSource } from "../../types/spehera"
+import type { Sphere, SphereImageSource, SphereSection } from "../../types/spehera"
 import {
     REVEAL_OFFSET_PX,
     STAGGER_STEP_S,
@@ -41,6 +41,32 @@ function useAutoSlideIndex(imageCount: number) {
     return index
 }
 
+function SphereExtraSections({ sections }: { sections: SphereSection[] }) {
+    if (sections.length === 0) return null
+    return (
+        <div className="shpera-extra-sections">
+            {sections.map((section, index) => (
+                <div className="shpera-section" key={index}>
+                    {section.heading ? (
+                        <h4 className="shpera-section-heading">
+                            <BrandInlineText text={section.heading} />
+                        </h4>
+                    ) : null}
+                    <p
+                        className={
+                            section.heading
+                                ? "shpera-section-body"
+                                : "shpera-section-body shpera-section-body--note"
+                        }
+                    >
+                        <BrandInlineText text={section.body} />
+                    </p>
+                </div>
+            ))}
+        </div>
+    )
+}
+
 export const Shpera = ({ cardTheme, ...sphere }: ShperaProps) => {
     const { t } = useLanguage()
     const reduce = useReducedMotion()
@@ -60,26 +86,25 @@ export const Shpera = ({ cardTheme, ...sphere }: ShperaProps) => {
     }, [sphere.description, descriptionExpanded])
 
     const showDescriptionToggle = descriptionOverflows || descriptionExpanded
+    const showCta = Boolean(sphere.cta.trim())
+    const leadText = sphere.lead.trim()
 
     const images = sphere.images
     const count = images.length
     const slideIndex = useAutoSlideIndex(count)
+    const caseCount = sphere.cases.length
     const casesGridStyle = {
-        "--shpera-case-count": sphere.cases.length,
+        "--shpera-case-count": caseCount,
     } as CSSProperties
 
     const imagesShellStyle =
-        count > 0
-            ? ({ "--shpera-slide-count": count } as CSSProperties)
-            : undefined
+        count > 0 ? ({ "--shpera-slide-count": count } as CSSProperties) : undefined
 
     return (
         <div className="shpera-item">
             <motion.div
                 className={
-                    count === 0
-                        ? "shpera-images shpera-images--empty"
-                        : "shpera-images"
+                    count === 0 ? "shpera-images shpera-images--empty" : "shpera-images"
                 }
                 style={imagesShellStyle}
                 initial={panelHidden}
@@ -117,6 +142,11 @@ export const Shpera = ({ cardTheme, ...sphere }: ShperaProps) => {
                     <h3 className="shpera-title">
                         <BrandInlineText text={sphere.subtitle} />
                     </h3>
+                    {leadText ? (
+                        <p className="shpera-lead">
+                            <BrandInlineText text={leadText} />
+                        </p>
+                    ) : null}
                     <div className="shpera-description-block">
                         <p
                             ref={descriptionRef}
@@ -137,40 +167,61 @@ export const Shpera = ({ cardTheme, ...sphere }: ShperaProps) => {
                                     type="button"
                                     className="shpera-description-toggle"
                                     aria-expanded={descriptionExpanded}
-                                    onClick={() =>
-                                        setDescriptionExpanded((v) => !v)
-                                    }
+                                    onClick={() => setDescriptionExpanded((v) => !v)}
                                 >
-                                    {descriptionExpanded ? t("shpera.collapse") : t("shpera.readMore")}
+                                    {descriptionExpanded
+                                        ? t("shpera.collapse")
+                                        : t("shpera.readMore")}
                                 </button>
                             ) : null}
                         </div>
                     </div>
                 </div>
-                <div className="shpera-cases" style={casesGridStyle}>
-                    {sphere.cases.map(({ id, title }, caseIndex) => (
-                        <motion.div
-                            className="shpera-case"
-                            key={id}
-                            style={{
-                                backgroundColor: cardTheme.backgroundColor,
-                                color: cardTheme.color,
-                                borderColor: cardTheme.borderColor,
-                            }}
-                            initial={caseHidden}
-                            whileInView={caseVisible}
-                            viewport={VIEWPORT_DEFAULT}
-                            transition={revealTransition(0.08 + caseIndex * STAGGER_STEP_S)}
-                        >
-                            <h4 className="shpera-case-title">{title}</h4>
-                            <hr
-                                className="shpera-case-divider"
-                                style={{ backgroundColor: cardTheme.dividerColor }}
-                            />
-                            <p className="shpera-case-description">{id}</p>
-                        </motion.div>
-                    ))}
-                </div>
+                <SphereExtraSections sections={sphere.sections} />
+                {caseCount > 0 ? (
+                    <>
+                        <h4 className="shpera-cases-heading">
+                            {t("spheres.casesTitle")}
+                        </h4>
+                        <div className="shpera-cases" style={casesGridStyle}>
+                            {sphere.cases.map(({ id, title, detail }, caseIndex) => (
+                                <motion.div
+                                    className="shpera-case"
+                                    key={id}
+                                    style={{
+                                        backgroundColor: cardTheme.backgroundColor,
+                                        color: cardTheme.color,
+                                        borderColor: cardTheme.borderColor,
+                                    }}
+                                    initial={caseHidden}
+                                    whileInView={caseVisible}
+                                    viewport={VIEWPORT_DEFAULT}
+                                    transition={revealTransition(
+                                        0.08 + caseIndex * STAGGER_STEP_S,
+                                    )}
+                                >
+                                    <h4 className="shpera-case-title">
+                                        <BrandInlineText text={title} />
+                                    </h4>
+                                    <hr
+                                        className="shpera-case-divider"
+                                        style={{
+                                            backgroundColor: cardTheme.dividerColor,
+                                        }}
+                                    />
+                                    <p className="shpera-case-detail">
+                                        <BrandInlineText text={detail} />
+                                    </p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </>
+                ) : null}
+                {showCta ? (
+                    <a className="shpera-cta" href="#contact">
+                        <BrandInlineText text={sphere.cta} />
+                    </a>
+                ) : null}
             </motion.div>
         </div>
     )

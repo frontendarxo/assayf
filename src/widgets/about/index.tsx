@@ -30,7 +30,7 @@ type FounderInfoModalProps = {
     closeLabel: string
     paragraphs: string[]
     contactHeading: string
-    whatsAppLine: string
+    whatsAppLinkLabel: string
 }
 
 function FounderInfoModal({
@@ -41,7 +41,7 @@ function FounderInfoModal({
     closeLabel,
     paragraphs,
     contactHeading,
-    whatsAppLine,
+    whatsAppLinkLabel,
 }: FounderInfoModalProps) {
     const mount =
         typeof document !== "undefined" ? document.body : null
@@ -104,7 +104,7 @@ function FounderInfoModal({
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                {whatsAppLine}
+                                {whatsAppLinkLabel}
                             </a>
                         </div>
                     </motion.div>
@@ -180,7 +180,7 @@ export const About = () => {
                 closeLabel={t("about.founderInfoClose")}
                 paragraphs={founderParagraphs}
                 contactHeading={t("about.founderInfoContactHeading")}
-                whatsAppLine={t("about.founderInfoWhatsAppLine")}
+                whatsAppLinkLabel={t("about.founderInfoWhatsAppLink")}
             />
             <div className="container">
                 <ScrollReveal>

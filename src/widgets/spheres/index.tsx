@@ -17,10 +17,10 @@ import "./style.css"
 
 const SPHERE_ACTIVE_BACKGROUND: Record<number, string> = {
     1: "#161A1D",
-    2: "#123430",
-    3: "#602026",
+    2: "#602026",
+    3: "#123430",
     4: "#182E44",
-    5: "#AEAEAE",
+    5: "#EAEAEA",
 }
 
 const SPHERES_TEXT_ON_DARK_BG = "#AEAEAE"

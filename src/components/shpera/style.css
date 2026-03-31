@@ -45,15 +45,75 @@
         border-color 0.45s ease;
 }
 
-.shpera-case-title,
-.shpera-case-description {
+.shpera-case-title {
     width: 100%;
     text-align: center;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
+}
+
+.shpera-case-detail {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    white-space: pre-line;
+    font-size: 0.92em;
+    line-height: 1.45;
+}
+
+.shpera-lead {
+    margin: 0 0 4px;
+    font-size: 1.02em;
+    line-height: 1.45;
+    opacity: 0.95;
+}
+
+.shpera-extra-sections {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(14px, 2vw, 20px);
+    width: 100%;
+}
+
+.shpera-section-heading {
+    margin: 0 0 6px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.shpera-section-body {
+    margin: 0;
+    white-space: pre-line;
+    line-height: 1.5;
+}
+
+.shpera-section-body--note {
+    opacity: 0.92;
+    font-size: 0.96em;
+}
+
+.shpera-cases-heading {
+    margin: 0;
+    width: 100%;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.shpera-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: 1px solid currentColor;
+    font-weight: 600;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.95;
+    transition: opacity 0.2s ease;
+}
+
+.shpera-cta:hover {
+    opacity: 1;
 }
 
 .sphera-text {
