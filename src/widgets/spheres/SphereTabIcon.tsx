@@ -1,0 +1,38 @@
+type SphereTabIconProps = {
+    className?: string
+}
+
+export function SphereTabIcon({ className }: SphereTabIconProps) {
+    return (
+        <svg
+            className={className}
+            width={80}
+            height={81}
+            viewBox="0 0 80 81"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden
+        >
+            <path
+                d="M35.3802 54.6701C35.3802 45.007 19.9423 37.0378 0 35.8828V73.4574C19.9423 72.3024 35.3802 64.3717 35.3802 54.6701Z"
+                fill="currentColor"
+            />
+            <path
+                d="M44.6177 25.3322C44.6177 34.9954 60.0556 42.9646 79.9978 44.1195V6.54492C60.0556 7.69988 44.6177 15.6306 44.6177 25.3322Z"
+                fill="currentColor"
+            />
+            <path
+                d="M15.5149 0C6.96824 0 0 7.00674 0 15.5534V25.3321L46.7757 12.666L80 3.61886V0H15.5149Z"
+                fill="currentColor"
+            />
+            <path
+                d="M33.2243 41.9634L80 54.6679V47.0452L46.7757 38.0366L0 25.332V32.9547L33.2243 41.9634Z"
+                fill="currentColor"
+            />
+            <path
+                d="M0 76.3817V80.0776H64.4851C73.0703 80.0776 80 73.1478 80 64.5627V54.707L33.2243 67.4116L0 76.3817Z"
+                fill="currentColor"
+            />
+        </svg>
+    )
+}

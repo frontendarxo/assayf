@@ -123,7 +123,7 @@ export const Contact = () => {
                 <div className="contact-layout">
                     <ScrollReveal className="contact-info-wrap" direction="right">
                         <ul className="contact-info">
-                            <li className="contact-info-item">
+                            <li className="contact-info-item contact-info-item--whatsapp">
                                 <span className="contact-info-icon-wrap" aria-hidden>
                                     <ContactWhatsAppIcon />
                                 </span>
@@ -134,7 +134,7 @@ export const Contact = () => {
                                     </a>
                                 </div>
                             </li>
-                            <li className="contact-info-item">
+                            <li className="contact-info-item contact-info-item--instagram">
                                 <span className="contact-info-icon-wrap" aria-hidden>
                                     <ContactInstagramIcon />
                                 </span>
@@ -150,7 +150,7 @@ export const Contact = () => {
                                     </a>
                                 </div>
                             </li>
-                            <li className="contact-info-item">
+                            <li className="contact-info-item contact-info-item--telegram">
                                 <span className="contact-info-icon-wrap" aria-hidden>
                                     <Send size={CONTACT_ICON_SIZE} strokeWidth={CONTACT_ICON_STROKE} />
                                 </span>

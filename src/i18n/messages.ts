@@ -25,12 +25,12 @@ const en: MessageTree = {
     },
     about: {
         sectionTitle: "About the company",
-        subtitle: "A little about us",
+        subtitle: "A little about the company",
         description:
             "Assayf Company is an international business platform that connects, manages, and guarantees results.",
         learnMore: "Learn more",
         imageAlt: "Assayf company founder — Ibrahim",
-        imageCaption: "Founder — Ibrahim / Assayf",
+        imageCaption: "Founder — Ibragimov Ibragim",
         statsTitle: "By the numbers",
         stat1: "Completed projects to date",
         stat2: "Satisfied clients",
@@ -161,12 +161,12 @@ const ru: MessageTree = {
     },
     about: {
         sectionTitle: "О компании",
-        subtitle: "Немного о нас",
+        subtitle: "Немного о компании",
         description:
             "Assayf Company — это международная бизнес-платформа, которая соединяет, управляет и гарантирует результаты.",
         learnMore: "Узнать больше",
         imageAlt: "Основатель компании Assayf — Ибрагим",
-        imageCaption: "Основатель — Ибрагим / Assayf",
+        imageCaption: "Основатель — Ибрагимов Ибрагим",
         statsTitle: "Мы в цифрах",
         stat1: "Выполненных задач во время",
         stat2: "Довольных клиентов",
@@ -297,12 +297,12 @@ const tr: MessageTree = {
     },
     about: {
         sectionTitle: "Şirket hakkında",
-        subtitle: "Kısaca biz",
+        subtitle: "Şirket hakkında kısaca",
         description:
             "Assayf Company; bağlar, yönetir ve sonuçları garanti eden uluslararası bir iş platformudur.",
         learnMore: "Daha fazla bilgi",
         imageAlt: "Assayf şirketi kurucusu — İbrahim",
-        imageCaption: "Kurucu — İbrahim / Assayf",
+        imageCaption: "Kurucu — İbrahimov İbrahim",
         statsTitle: "Rakamlarla biz",
         stat1: "Bugüne kadar tamamlanan görevler",
         stat2: "Memnun müşteriler",

@@ -1,9 +1,8 @@
 import { clsx } from "clsx"
-import { motion, useReducedMotion } from "framer-motion"
-import { useMemo, useState } from "react"
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
+import { useEffect, useMemo, useState } from "react"
 
 import { Shpera, type ShperaCardTheme } from "../../components/shpera"
-import spheresImage from "../../assets/sphere-logos.svg"
 import { getLocalizedSpheres } from "../../data/spheres"
 import { useLanguage } from "../../i18n/useLanguage"
 import {
@@ -13,6 +12,7 @@ import {
     revealTransition,
 } from "../../shared/motion/reveal"
 import { ScrollReveal } from "../../shared/scroll-reveal"
+import { SphereTabIcon } from "./SphereTabIcon"
 import "./style.css"
 
 const SPHERE_ACTIVE_BACKGROUND: Record<number, string> = {
@@ -26,6 +26,9 @@ const SPHERE_ACTIVE_BACKGROUND: Record<number, string> = {
 const SPHERES_TEXT_ON_DARK_BG = "#AEAEAE"
 const SPHERES_TEXT_ON_LIGHT_BG = "#161A1D"
 const DARK_BG_LUMINANCE_THRESHOLD = 0.4
+
+const SPHERE_AUTO_ROTATION_MS = 12_000
+const SPHERE_CONTENT_CROSSFADE_S = 0.55
 
 const SPHERES_CARD_ON_DARK_SECTION = {
     backgroundColor: "rgba(255, 255, 255, 0.08)",
@@ -63,6 +66,18 @@ export const Spheres = () => {
     const spheres = useMemo(() => getLocalizedSpheres(t), [t])
     const [activeSphere, setActiveSphere] = useState<number>(1)
     const reduce = useReducedMotion()
+
+    useEffect(() => {
+        if (reduce || spheres.length <= 1) return
+        const id = window.setInterval(() => {
+            setActiveSphere((prev) => {
+                const idx = spheres.findIndex((s) => s.id === prev)
+                const nextIdx = (Math.max(0, idx) + 1) % spheres.length
+                return spheres[nextIdx].id
+            })
+        }, SPHERE_AUTO_ROTATION_MS)
+        return () => window.clearInterval(id)
+    }, [reduce, spheres, activeSphere])
 
     const sectionStyle = useMemo(() => {
         const backgroundColor = SPHERE_ACTIVE_BACKGROUND[activeSphere]
@@ -107,18 +122,32 @@ export const Spheres = () => {
                             transition={revealTransition(index * STAGGER_STEP_S)}
                             onClick={() => setActiveSphere(sphere.id)}
                         >
-                            <img src={spheresImage} alt={sphere.title} />
+                            <SphereTabIcon className="spheres-list__icon" />
                             {sphere.title}
                         </motion.li>
                     ))}
                 </ul>
                 <ScrollReveal delay={0.1}>
                     <div className="spheres-content">
-                        {spheres
-                            .filter((sphere) => sphere.id === activeSphere)
-                            .map((sphere) => (
-                                <Shpera key={sphere.id} {...sphere} cardTheme={cardTheme} />
-                            ))}
+                        <AnimatePresence mode="wait">
+                            {spheres
+                                .filter((sphere) => sphere.id === activeSphere)
+                                .map((sphere) => (
+                                    <motion.div
+                                        key={sphere.id}
+                                        className="spheres-content__panel"
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0 }}
+                                        transition={{
+                                            duration: reduce ? 0 : SPHERE_CONTENT_CROSSFADE_S,
+                                            ease: "easeInOut",
+                                        }}
+                                    >
+                                        <Shpera {...sphere} cardTheme={cardTheme} />
+                                    </motion.div>
+                                ))}
+                        </AnimatePresence>
                     </div>
                 </ScrollReveal>
             </div>
