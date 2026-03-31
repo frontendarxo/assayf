@@ -1,0 +1,90 @@
+.advantages {
+    --advantages-list-max: 56rem;
+    --advantages-item-pad-y: clamp(0.875rem, 2vw, 1.125rem);
+    --advantages-item-pad-x: clamp(1rem, 2.5vw, 1.375rem);
+    --advantages-list-gap-y: clamp(0.625rem, 1.6vw, 0.875rem);
+    --advantages-list-gap-x: clamp(1.25rem, 3.2vw, 2rem);
+    --advantages-marker-size: 0.375rem;
+    --advantages-marker-offset: 0.55em;
+
+    color: #eaeaea;
+    padding: clamp(20px, 3.5vw, 40px);
+    margin: 0 clamp(16px, 4vw, 80px) 80px;
+    background-color: #161a1d;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+.advantages-inner {
+    max-width: 960px;
+    margin-inline: auto;
+}
+
+.advantages-title {
+    text-align: center;
+    font-size: clamp(2rem, 5.4vw, 3.25rem);
+    font-weight: 300;
+    margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+}
+
+.advantages-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--advantages-list-gap-y);
+    max-width: var(--advantages-list-max);
+    margin-inline: auto;
+    align-items: stretch;
+}
+
+@media (min-width: 640px) {
+    .advantages-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: var(--advantages-list-gap-x);
+        row-gap: var(--advantages-list-gap-y);
+    }
+}
+
+@media (min-width: 1024px) {
+    .advantages-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        column-gap: var(--advantages-list-gap-x);
+        row-gap: calc(var(--advantages-list-gap-y) + 0.125rem);
+    }
+}
+
+.advantages-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin: 0;
+    padding: var(--advantages-item-pad-y) var(--advantages-item-pad-x);
+    font-size: clamp(0.9375rem, 1.65vw, 1.0625rem);
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    color: #d0d4d6;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.advantages-item::before {
+    content: "";
+    flex-shrink: 0;
+    width: var(--advantages-marker-size);
+    height: var(--advantages-marker-size);
+    margin-top: var(--advantages-marker-offset);
+    border-radius: 50%;
+    background: linear-gradient(145deg, #eaeaea 0%, #9da1a2 100%);
+    box-shadow: 0 0 0 2px rgba(234, 234, 234, 0.12);
+}
+
+@media (max-width: 640px) {
+    .advantages {
+        margin-bottom: 56px;
+        padding: 20px 16px;
+    }
+}

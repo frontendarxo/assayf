@@ -1,5 +1,6 @@
 import { Navbar } from "./components/navbar"
 import { About } from "./widgets/about"
+import { Advantages } from "./widgets/advantages"
 import { Contact } from "./widgets/contact"
 import { Footer } from "./widgets/footer"
 import { Header } from "./widgets/header"
@@ -14,6 +15,7 @@ function App() {
       <Header />
       <main>
         <About />
+        <Advantages />
         <Spheres />
         <Reviews />
         <Contact />

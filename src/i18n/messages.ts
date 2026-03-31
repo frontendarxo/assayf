@@ -48,6 +48,17 @@ const en: MessageTree = {
         founderInfoContactHeading: "Contact:",
         founderInfoWhatsAppLine: "WhatsApp: +7 934 444 50 40",
     },
+    advantages: {
+        sectionTitle: "Why choose ASSAYF",
+        items: {
+            "1": "No intermediaries",
+            "2": "Direct ties with suppliers and factories",
+            "3": "Control at every stage",
+            "4": "Confidentiality of operations",
+            "5": "International geography",
+            "6": "Individual approach to each project",
+        },
+    },
     spheres: {
         sectionTitle: "Our projects",
         imageAltSuffix: "image",
@@ -195,6 +206,17 @@ const ru: MessageTree = {
         founderInfoContactHeading: "Контакт:",
         founderInfoWhatsAppLine: "WhatsApp: +7 934 444 50 40",
     },
+    advantages: {
+        sectionTitle: "Почему выбирают ASSAYF",
+        items: {
+            "1": "Работа без посредников",
+            "2": "Прямые связи с поставщиками и фабриками",
+            "3": "Контроль на каждом этапе",
+            "4": "Конфиденциальность работы",
+            "5": "Международная география",
+            "6": "Индивидуальный подход к каждому проекту",
+        },
+    },
     spheres: {
         sectionTitle: "Наши проекты",
         imageAltSuffix: "изображение",
@@ -341,6 +363,17 @@ const tr: MessageTree = {
             "Uluslararası ticaret ve lojistik yönlerini geliştiren bir girişimci.\n\nFarklı ülkelerde çalışma deneyimi ve üreticilerle doğrudan etkileşim, etkili iş süreçleri ve müşteriler için optimal çözümler sunmaya olanak tanır.\n\nFaaliyet coğrafyası — 18'den fazla ülke, yeni yönlerin ve pazarların sürekli gelişimi.",
         founderInfoContactHeading: "İletişim:",
         founderInfoWhatsAppLine: "WhatsApp: +7 934 444 50 40",
+    },
+    advantages: {
+        sectionTitle: "Neden ASSAYF tercih ediliyor",
+        items: {
+            "1": "Aracı olmadan çalışma",
+            "2": "Tedarikçiler ve fabrikalarla doğrudan bağlantılar",
+            "3": "Her aşamada kontrol",
+            "4": "Çalışmaların gizliliği",
+            "5": "Uluslararası coğrafya",
+            "6": "Her projeye özel yaklaşım",
+        },
     },
     spheres: {
         sectionTitle: "Projelerimiz",

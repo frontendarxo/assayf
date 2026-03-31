@@ -10,7 +10,7 @@
 .about-title {
     text-align: center;
     font-size: clamp(2rem, 5.4vw, 3.25rem);
-    font-weight: 800;
+    font-weight: 300;
     margin-bottom: clamp(24px, 4vw, 40px);
 }
 
