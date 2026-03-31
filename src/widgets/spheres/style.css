@@ -61,11 +61,23 @@
     outline-offset: 2px;
 }
 
+.spheres-list__icon-wrap {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: center center;
+}
+
 .spheres-list__icon {
     width: clamp(36px, 8vw, 56px);
     height: clamp(36px, 8vw, 56px);
     flex-shrink: 0;
     color: inherit;
+    transition: filter 0.35s ease;
+}
+
+.spheres-list__item--active .spheres-list__icon {
+    filter: drop-shadow(0 2px 14px color-mix(in srgb, currentColor 42%, transparent));
 }
 
 .spheres-list__item--active {

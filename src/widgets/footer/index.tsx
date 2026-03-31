@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "framer-motion"
 
 import logo from "../../assets/logo.svg"
 import { siteNavItemDefs } from "../../data/navigation"
+import { OptimizedImage } from "../../shared/optimized-image"
 import { useLanguage } from "../../i18n/useLanguage"
 import { BrandSpan } from "../../shared/brand-typography"
 import {
@@ -34,7 +35,7 @@ export const Footer = () => {
                 <div className="footer-top">
                     <div className="footer-brand">
                         <a className="footer-logo-link" href="#home" aria-label={t("footer.logoAria")}>
-                            <img src={logo} alt="" className="footer-logo" />
+                            <OptimizedImage src={logo} alt="" className="footer-logo" />
                         </a>
                         <p className="footer-tagline">{t("footer.tagline")}</p>
                     </div>

@@ -3,6 +3,7 @@ import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from
 
 import { useLanguage } from "../../i18n/useLanguage"
 import { BrandInlineText } from "../../shared/brand-typography"
+import { OptimizedImage } from "../../shared/optimized-image"
 import type { Sphere, SphereImageSource, SphereSection } from "../../types/spehera"
 import {
     REVEAL_OFFSET_PX,
@@ -120,12 +121,13 @@ export const Shpera = ({ cardTheme, ...sphere }: ShperaProps) => {
                             transform: `translateX(-${(slideIndex * 100) / count}%)`,
                         }}
                     >
-                        {images.map((image) => (
-                            <img
+                        {images.map((image, imageIndex) => (
+                            <OptimizedImage
                                 src={sphereImageUrl(image.image)}
                                 alt={`${sphere.title} — ${t("spheres.imageAltSuffix")}`}
                                 key={image.id}
                                 className="shpera-images-slide"
+                                priority={imageIndex === 0}
                             />
                         ))}
                     </div>

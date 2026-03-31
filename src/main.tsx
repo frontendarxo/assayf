@@ -1,6 +1,7 @@
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 
+import "./bootstrapHeroPreload"
 import { LanguageProvider } from "./i18n/LanguageProvider"
 import "./index.css"
 import App from "./App.tsx"

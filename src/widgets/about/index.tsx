@@ -5,6 +5,7 @@ import { Info, X } from "lucide-react"
 
 import aboutImage from "../../assets/img/About-Img.jpeg"
 import { useLanguage } from "../../i18n/useLanguage"
+import { OptimizedImage } from "../../shared/optimized-image"
 import { PHONE_WHATSAPP } from "../contact"
 import { BrandInlineText } from "../../shared/brand-typography"
 import { STAGGER_STEP_S } from "../../shared/motion/reveal"
@@ -230,7 +231,7 @@ export const About = () => {
                             >
                                 <Info aria-hidden size={22} strokeWidth={2} />
                             </button>
-                            <img
+                            <OptimizedImage
                                 src={aboutImage}
                                 alt={t("about.imageAlt")}
                             />

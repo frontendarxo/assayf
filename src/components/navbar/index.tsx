@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import logo from "../../assets/logo.svg"
 import { siteNavItemDefs } from "../../data/navigation"
 import { useLanguage } from "../../i18n/useLanguage"
+import { OptimizedImage } from "../../shared/optimized-image"
 import { LanguageToggle } from "../../i18n/LanguageToggle"
 import "./style.css"
 
@@ -77,7 +78,7 @@ export const Navbar = () => {
 
     return (
         <nav ref={navRef} className="navbar">
-            <img src={logo} alt="logo" className="logo" />
+            <OptimizedImage src={logo} alt="logo" className="logo" priority />
             <div className="nav-end">
                 <LanguageToggle />
                 <button

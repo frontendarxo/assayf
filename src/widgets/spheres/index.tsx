@@ -30,6 +30,11 @@ const DARK_BG_LUMINANCE_THRESHOLD = 0.4
 const SPHERE_AUTO_ROTATION_MS = 12_000
 const SPHERE_CONTENT_CROSSFADE_S = 0.55
 
+const ICON_SPRING_STIFFNESS = 400
+const ICON_SPRING_DAMPING = 26
+const ICON_HOVER_SCALE = 1.06
+const ICON_REVEAL_DELAY_S = 0.03
+
 const SPHERES_CARD_ON_DARK_SECTION = {
     backgroundColor: "rgba(255, 255, 255, 0.08)",
     borderColor: "rgba(255, 255, 255, 0.22)",
@@ -100,6 +105,10 @@ export const Spheres = () => {
 
     const listItemHidden = reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: REVEAL_OFFSET_PX * 0.5 }
     const listItemVisible = { opacity: 1, y: 0 }
+    const iconHidden = reduce
+        ? { scale: 1, opacity: 1 }
+        : { scale: 0.88, opacity: 0.65 }
+    const iconVisible = { scale: 1, opacity: 1 }
 
     return (
         <section className="spheres" id="activities" style={sectionStyle}>
@@ -122,7 +131,26 @@ export const Spheres = () => {
                             transition={revealTransition(index * STAGGER_STEP_S)}
                             onClick={() => setActiveSphere(sphere.id)}
                         >
-                            <SphereTabIcon className="spheres-list__icon" />
+                            <motion.span
+                                className="spheres-list__icon-wrap"
+                                initial={iconHidden}
+                                whileInView={iconVisible}
+                                whileHover={reduce ? undefined : { scale: ICON_HOVER_SCALE }}
+                                viewport={VIEWPORT_DEFAULT}
+                                transition={
+                                    reduce
+                                        ? { duration: 0 }
+                                        : {
+                                              type: "spring",
+                                              stiffness: ICON_SPRING_STIFFNESS,
+                                              damping: ICON_SPRING_DAMPING,
+                                              delay:
+                                                  index * STAGGER_STEP_S + ICON_REVEAL_DELAY_S,
+                                          }
+                                }
+                            >
+                                <SphereTabIcon className="spheres-list__icon" />
+                            </motion.span>
                             {sphere.title}
                         </motion.li>
                     ))}
