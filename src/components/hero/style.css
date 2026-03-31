@@ -11,9 +11,38 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(1rem, 3vw, 1.5rem);
+    gap: clamp(1.25rem, 3.2vw, 1.75rem);
     width: 100%;
     padding-bottom: clamp(72px, 12vh, 120px);
+}
+
+.hero-logo-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-logo-link {
+    display: inline-block;
+    line-height: 0;
+    border-radius: 4px;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-logo-link:hover {
+    transform: scale(1.02);
+}
+
+.hero-logo-link:focus-visible {
+    outline: 2px solid rgba(234, 234, 234, 0.65);
+    outline-offset: 6px;
+}
+
+.hero-logo {
+    width: clamp(180px, 42vw, 320px);
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 6px 28px rgba(0, 0, 0, 0.42));
 }
 
 .hero-title {

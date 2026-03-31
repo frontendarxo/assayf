@@ -1,6 +1,8 @@
 import { motion, useReducedMotion } from "framer-motion"
 
+import logo from "../../assets/logo.svg"
 import { useLanguage } from "../../i18n/useLanguage"
+import { OptimizedImage } from "../../shared/optimized-image"
 import { REVEAL_EASE, REVEAL_OFFSET_PX, REVEAL_DURATION_S } from "../../shared/motion/reveal"
 import "./style.css"
 
@@ -38,6 +40,15 @@ export const Hero = () => {
                     },
                 }}
             >
+                <motion.div className="hero-logo-row" variants={lineVariants}>
+                    <a
+                        className="hero-logo-link"
+                        href="#home"
+                        aria-label={t("footer.logoAria")}
+                    >
+                        <OptimizedImage src={logo} alt="" className="hero-logo" priority />
+                    </a>
+                </motion.div>
                 <motion.h1 className="hero-title" variants={lineVariants}>
                     {t("hero.title")}
                 </motion.h1>
