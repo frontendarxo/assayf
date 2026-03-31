@@ -180,7 +180,7 @@ export const Spheres = () => {
                             >
                                 <SphereTabIcon className="spheres-list__icon" />
                             </motion.span>
-                            {sphere.title}
+                            <span className="spheres-list__label">{sphere.title}</span>
                         </motion.li>
                     ))}
                 </ul>

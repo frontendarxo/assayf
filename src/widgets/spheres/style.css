@@ -21,6 +21,8 @@
 
 .spheres-list {
     --spheres-tab-gap: clamp(6px, 1.2vw, 14px);
+    --spheres-label-underline-rest: color-mix(in srgb, currentColor 38%, transparent);
+    --spheres-label-underline-hover: color-mix(in srgb, currentColor 72%, transparent);
 
     font-family: "Assayf Brand", "Assayf Text", system-ui, sans-serif;
 
@@ -59,6 +61,25 @@
 .spheres-list__item:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 2px;
+}
+
+.spheres-list__label {
+    display: inline-block;
+    max-width: 100%;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+    text-decoration-color: var(--spheres-label-underline-rest);
+    transition: text-decoration-color 0.2s ease;
+}
+
+.spheres-list__item:hover .spheres-list__label {
+    text-decoration-color: var(--spheres-label-underline-hover);
+}
+
+.spheres-list__item--active .spheres-list__label {
+    text-decoration-color: currentColor;
+    text-decoration-thickness: 1.5px;
 }
 
 .spheres-list__icon-wrap {
