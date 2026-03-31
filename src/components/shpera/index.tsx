@@ -20,7 +20,10 @@ export type ShperaCardTheme = {
     dividerColor: string
 }
 
-type ShperaProps = Sphere & { cardTheme: ShperaCardTheme }
+type ShperaProps = Sphere & {
+    cardTheme: ShperaCardTheme
+    onCtaClick?: () => void
+}
 
 function sphereImageUrl(source: SphereImageSource): string {
     return typeof source === "string" ? source : source.src
@@ -68,7 +71,7 @@ function SphereExtraSections({ sections }: { sections: SphereSection[] }) {
     )
 }
 
-export const Shpera = ({ cardTheme, ...sphere }: ShperaProps) => {
+export const Shpera = ({ cardTheme, onCtaClick, ...sphere }: ShperaProps) => {
     const { t } = useLanguage()
     const reduce = useReducedMotion()
     const [descriptionExpanded, setDescriptionExpanded] = useState(false)
@@ -220,7 +223,15 @@ export const Shpera = ({ cardTheme, ...sphere }: ShperaProps) => {
                     </>
                 ) : null}
                 {showCta ? (
-                    <a className="shpera-cta" href="#contact">
+                    <a
+                        className="shpera-cta"
+                        href="#contact"
+                        onClick={(event) => {
+                            if (!onCtaClick) return
+                            event.preventDefault()
+                            onCtaClick()
+                        }}
+                    >
                         <BrandInlineText text={sphere.cta} />
                     </a>
                 ) : null}

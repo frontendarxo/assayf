@@ -251,7 +251,6 @@ const en: MessageTree = {
             assayf_product: "Assayf products",
             export_import: "Export & import",
             valut: "Assayf currency",
-            general: "Company",
         },
     },
     footer: {
@@ -513,7 +512,6 @@ const ru: MessageTree = {
             assayf_product: "Продукция Assayf",
             export_import: "Экспорт и импорт",
             valut: "Валют Assayf",
-            general: "Компания",
         },
     },
     footer: {
@@ -773,7 +771,6 @@ const tr: MessageTree = {
             assayf_product: "Assayf ürünleri",
             export_import: "İhracat ve ithalat",
             valut: "Assayf döviz",
-            general: "Şirket",
         },
     },
     footer: {

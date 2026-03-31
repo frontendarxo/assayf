@@ -3,8 +3,10 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { useEffect, useMemo, useRef, useState } from "react"
 
 import { Shpera, type ShperaCardTheme } from "../../components/shpera"
+import { useContactSphere } from "../../contexts/ContactSphereContext"
 import { getLocalizedSpheres } from "../../data/spheres"
 import { useLanguage } from "../../i18n/useLanguage"
+import { getContactSphereIdForActivity } from "../contact/spheres"
 import {
     REVEAL_OFFSET_PX,
     STAGGER_STEP_S,
@@ -71,6 +73,7 @@ function sphereListItemStyle(activeId: number, sphereId: number) {
 
 export const Spheres = () => {
     const { t } = useLanguage()
+    const { openContactWithSphere } = useContactSphere()
     const spheres = useMemo(() => getLocalizedSpheres(t), [t])
     const [activeSphere, setActiveSphere] = useState<number>(1)
     const [isSectionInView, setIsSectionInView] = useState(false)
@@ -201,7 +204,15 @@ export const Spheres = () => {
                                             ease: "easeInOut",
                                         }}
                                     >
-                                        <Shpera {...sphere} cardTheme={cardTheme} />
+                                        <Shpera
+                                            {...sphere}
+                                            cardTheme={cardTheme}
+                                            onCtaClick={() =>
+                                                openContactWithSphere(
+                                                    getContactSphereIdForActivity(sphere.id),
+                                                )
+                                            }
+                                        />
                                     </motion.div>
                                 ))}
                         </AnimatePresence>

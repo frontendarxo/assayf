@@ -1,10 +1,17 @@
 import { Send } from "lucide-react"
-import { type FormEvent, useCallback, useMemo, useState } from "react"
+import { type FormEvent, useCallback, useEffect, useMemo, useState } from "react"
 
+import { useContactSphere } from "../../contexts/ContactSphereContext"
 import { useLanguage } from "../../i18n/useLanguage"
 import { ScrollReveal } from "../../shared/scroll-reveal"
 
-import { CONTACT_SPHERES, digitsForTel, MAIN_TELEGRAM_USER, type SphereId } from "./spheres"
+import {
+    CONTACT_SPHERES,
+    digitsForTel,
+    formatPhoneForDisplay,
+    MAIN_TELEGRAM_USER,
+    type SphereId,
+} from "./spheres"
 
 import "./style.css"
 
@@ -73,11 +80,18 @@ const sphereLabelKey = (id: SphereId) => `contact.spheres.${id}` as const
 
 export const Contact = () => {
     const { t } = useLanguage()
+    const { pendingContactSphereId, clearPendingContactSphere } = useContactSphere()
     const [channel, setChannel] = useState<ContactChannel>("whatsapp")
     const [contactValue, setContactValue] = useState("")
     const [message, setMessage] = useState("")
     const [showMessageField, setShowMessageField] = useState(false)
     const [selectedSphereId, setSelectedSphereId] = useState<SphereId | null>(null)
+
+    useEffect(() => {
+        if (pendingContactSphereId == null) return
+        setSelectedSphereId(pendingContactSphereId)
+        clearPendingContactSphere()
+    }, [pendingContactSphereId, clearPendingContactSphere])
 
     const channelLabel = useMemo(
         (): Record<ContactChannel, string> => ({
@@ -121,6 +135,7 @@ export const Contact = () => {
     }
 
     const waDigits = selectedSphere ? digitsForTel(selectedSphere.whatsappDigits) : ""
+    const waDisplay = selectedSphere ? formatPhoneForDisplay(selectedSphere.whatsappDigits) : ""
 
     return (
         <section className="contact" id="contact">
@@ -186,7 +201,7 @@ export const Contact = () => {
                                             target="_blank"
                                             rel="noreferrer noopener"
                                         >
-                                            {selectedSphere.whatsappDisplay}
+                                            {waDisplay}
                                         </a>
                                     </div>
                                 </li>
