@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion"
 
-import logo from "../../assets/logo.svg"
+import logo from "../../assets/Версия без текста.svg"
 import { useLanguage } from "../../i18n/useLanguage"
 import { OptimizedImage } from "../../shared/optimized-image"
 import { REVEAL_EASE, REVEAL_OFFSET_PX, REVEAL_DURATION_S } from "../../shared/motion/reveal"
