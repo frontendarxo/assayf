@@ -107,8 +107,45 @@ body {
   font-weight: 300;
 }
 
+.optimized-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  opacity: 1;
+  visibility: visible;
+  vertical-align: top;
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.14) 18%,
+    rgba(255, 255, 255, 0.08) 36%
+  );
+  background-size: 260% 100%;
+  animation: optimized-image-shimmer 1.35s ease-in-out infinite;
+}
+
+.optimized-image[data-img-status="loaded"] {
+  animation: none;
+  background: transparent;
+}
+
+.optimized-image[data-img-status="error"] {
+  animation: none;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+@keyframes optimized-image-shimmer {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
 .font-brand {
-  font-family: "Assayf Brand", "Assayf Text", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: "Assayf Text", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 .container {

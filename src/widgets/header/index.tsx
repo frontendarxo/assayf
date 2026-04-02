@@ -1,7 +1,10 @@
 import { motion, useReducedMotion } from "framer-motion"
+import { useEffect, useMemo, useState } from "react"
 import { Hero } from "../../components/hero"
+import heroBgUrl from "../../assets/img/hero-bg.png"
 import { useLanguage } from "../../i18n/useLanguage"
 import { Button } from "../../shared/button"
+import { OptimizedImage } from "../../shared/optimized-image"
 import {
     HEADER_CHILD_DELAY_S,
     HEADER_FADE_DURATION_S,
@@ -12,9 +15,29 @@ import {
 } from "../../shared/motion/reveal"
 import "./style.css"
 
+function shouldAvoidHeavyHeroBackground(): boolean {
+    if (typeof navigator === "undefined") return false
+    const connection = (
+        navigator as unknown as {
+            connection?: { saveData?: boolean; effectiveType?: string }
+        }
+    ).connection
+
+    if (!connection) return false
+    if (connection.saveData) return true
+    return connection.effectiveType === "2g" || connection.effectiveType === "slow-2g"
+}
+
 export const Header = () => {
     const { t } = useLanguage()
     const reduce = useReducedMotion()
+    const [avoidHeavyBg, setAvoidHeavyBg] = useState(false)
+
+    useEffect(() => {
+        setAvoidHeavyBg(shouldAvoidHeavyHeroBackground())
+    }, [])
+
+    const shouldRenderHeroBg = useMemo(() => !avoidHeavyBg, [avoidHeavyBg])
 
     const blockHidden = reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 26 }
     const blockVisible = { opacity: 1, y: 0 }
@@ -34,6 +57,15 @@ export const Header = () => {
                 ease: REVEAL_EASE,
             }}
         >
+            {shouldRenderHeroBg ? (
+                <OptimizedImage
+                    className="header-bg"
+                    src={heroBgUrl}
+                    alt=""
+                    aria-hidden
+                    priority
+                />
+            ) : null}
             <div className="container">
                 <motion.div
                     className="header-content"

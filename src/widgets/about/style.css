@@ -34,6 +34,8 @@
 
 .about-lead {
     margin: 0;
+    display: flex;
+    flex-direction: column;
     font-size: clamp(1.125rem, 2.8vw, 1.35rem);
     font-weight: 400;
     line-height: 1.45;
@@ -314,6 +316,8 @@
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 2;
+    pointer-events: none;
     margin: 0;
     padding: var(--about-caption-padding-block) var(--about-caption-padding-inline);
     font-size: clamp(0.875rem, 2.2vw, 1.0625rem);

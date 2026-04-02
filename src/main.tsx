@@ -1,9 +1,9 @@
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 
-import "./bootstrapHeroPreload"
-import { ContactSphereProvider } from "./contexts/ContactSphereContext"
-import { LanguageProvider } from "./i18n/LanguageProvider"
+import "./bootstrapHeroPreload.ts"
+import { ContactSphereProvider } from "./contexts/ContactSphereContext.tsx"
+import { LanguageProvider } from "./i18n/LanguageProvider.tsx"
 import "./index.css"
 import App from "./App.tsx"
 
