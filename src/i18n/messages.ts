@@ -188,7 +188,7 @@ const en: MessageTree = {
             lead: "",
             description:
                 "ASSAYF Export supplies goods from multiple countries and works with manufacturers.\n\nWe organize exports, build distribution, and close wholesale contracts.",
-            services: `• Export from Turkey
+            services: `• Export from Turkey, China, and Indonesia
 • Import into Russia and the CIS
 • Manufacturer partnerships
 • Product distribution
@@ -459,7 +459,7 @@ const ru: MessageTree = {
             lead: "",
             description:
                 "ASSAYF Export — направление, специализирующееся на поставках товаров из разных стран и работе с производителями.\n\nМы организуем экспорт продукции, выстраиваем дистрибуцию и заключаем оптовые контракты.",
-            services: `• Экспорт товаров из Турции
+            services: `• Экспорт товаров из Турции, Китая и Индонезии
 • Импорт в Россию и страны СНГ
 • Работа с производителями
 • Дистрибуция товаров
