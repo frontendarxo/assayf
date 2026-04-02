@@ -13,6 +13,7 @@ export const Reviews = () => {
     const { t } = useLanguage()
     const reviews = useMemo(() => getLocalizedReviews(t), [t])
     const [activeIndex, setActiveIndex] = useState(0)
+    const moreHint = t("reviews.moreHint")
 
     useEffect(() => {
         if (reviews.length === 0) return
@@ -33,30 +34,34 @@ export const Reviews = () => {
                         <h3 className="reviews-subtitle">{t("reviews.subtitle")}</h3>
                     </ScrollReveal>
                     <ScrollReveal delay={0.14}>
-                        <div
-                            className="relative isolate mx-auto grid w-full max-w-2xl grid-cols-1"
-                            role="region"
-                            aria-roledescription="carousel"
-                            aria-label={t("reviews.carouselLabel")}
-                            aria-live="polite"
-                        >
-                            {reviews.map((review, index) => (
-                                <div
-                                    key={review.id}
-                                    className={clsx(
-                                        "reviews-list-item col-start-1 row-start-1 flex flex-col items-center justify-center gap-2.5 self-stretch rounded-[10px] bg-[#EAEAEA] px-5 py-10 shadow-[0_0_10px_rgba(0,0,0,0.1)] transition-opacity duration-500 ease-in-out motion-reduce:transition-none",
-                                        index === activeIndex
-                                            ? "z-10 opacity-100"
-                                            : "z-0 opacity-0 pointer-events-none",
-                                    )}
-                                    aria-hidden={index !== activeIndex}
-                                >
-                                    <p className="text-center text-2xl font-extrabold text-[#101010]">{review.name}</p>
-                                    <p className="text-center text-xl font-normal leading-snug text-[#9DA1A2]">
-                                        {review.text}
-                                    </p>
-                                </div>
-                            ))}
+                        <div className="mx-auto w-full max-w-2xl">
+                            <div
+                                className="relative isolate grid w-full grid-cols-1"
+                                role="region"
+                                aria-roledescription="carousel"
+                                aria-label={t("reviews.carouselLabel")}
+                                aria-live="polite"
+                            >
+                                {reviews.map((review, index) => (
+                                    <div
+                                        key={review.id}
+                                        className={clsx(
+                                            "reviews-list-item col-start-1 row-start-1 flex flex-col items-center justify-center gap-2.5 self-stretch rounded-[10px] bg-[#EAEAEA] px-5 py-10 shadow-[0_0_10px_rgba(0,0,0,0.1)] transition-opacity duration-500 ease-in-out motion-reduce:transition-none",
+                                            index === activeIndex
+                                                ? "z-10 opacity-100"
+                                                : "z-0 opacity-0 pointer-events-none",
+                                        )}
+                                        aria-hidden={index !== activeIndex}
+                                    >
+                                        <p className="text-center text-xl font-normal leading-snug text-[#9DA1A2]">
+                                            {review.text}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                            <p className="mt-4 text-center text-sm font-normal text-[#9DA1A2]">
+                                {moreHint}
+                            </p>
                         </div>
                     </ScrollReveal>
                 </div>

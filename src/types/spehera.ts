@@ -28,7 +28,6 @@ export type Sphere = {
 }
 
 export type Review = {
-    id: number;
-    name: string;
-    text: string;
+    id: number
+    text: string
 }
